@@ -1,0 +1,20 @@
+{
+	"name": "silverstripe/imagegallery_basic",
+	"type": "silverstripe-module",
+	"description": "basic image gallery",
+	"homepage": "http://www.silverstripe-webdevelopment.com",
+	"keywords": ["imagegallery_basic", "silverstripe"],
+	"license": "Sunny Side Up (BSD-3-Clause and CUSTOM)",
+	"authors":[
+		{
+			"name": "Nicolaas Francken",
+			"homepage": "https://github.com/sunnysideup",
+			"email" : "modules@sunnysideup.co.nz",
+			"role" : "lead developer"
+		}
+	],
+	"require":{
+		"php": ">=5.3.2",
+		"silverstripe/framework": "3.0.*"
+	}
+}
