@@ -13,7 +13,7 @@ class ImageGalleryEntry extends DataObject {
 	);
 
 	static function get_has_many_complex_table_field($controller, $name) {
-		return new HasManyComplexTableField(
+		return new GridField(### UPGRADE: check syntax  ###(
 			$controller,
 			$name,
 			"ImageGalleryEntry",

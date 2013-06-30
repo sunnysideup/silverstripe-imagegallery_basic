@@ -1,13 +1,13 @@
 <% if MyChildGalleries %>
 <ul id="Galleries">
-	<% control MyChildGalleries %>
+	<% loop ### with MyChildGalleries %>
 		<li class="$FirstLast $EvensOdd $LinkingMode">
 			<% if ImageGalleryEntries %>
 				<a href="$Link">
-				<% control ImageGalleryEntries.First %>
-				<% control Image %>
+				<% loop ### with ImageGalleryEntries.First %>
+				<% loop ### with Image %>
 					<img src="$CroppedImage(100,100).Link" title="$Title" alt="$Title" width="100" height="100" />
-				<% end_control %><% end_control %>
+				<%  ### UPGRADE_REQUIRED   use end_loop OR end_with ###%><%  ### UPGRADE_REQUIRED   use end_loop OR end_with ###%>
 				</a>
 			<% end_if %>
 			<div class="details">
@@ -15,6 +15,6 @@
 				<div class="contentSummary">$Content.Summary</div>
 			</div>
 		</li>
-	<% end_control %>
+	<%  ### UPGRADE_REQUIRED   use end_loop OR end_with ###%>
 </ul>
 <% end_if %>

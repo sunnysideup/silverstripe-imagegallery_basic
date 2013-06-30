@@ -20,8 +20,8 @@ class ImageGalleryPage extends Page {
 
 	function getCMSFields() {
 		$fields = parent::getCMSFields();
-		$fields->addFieldToTab("Root.Content.Gallery", new TreeDropdownField($name = "AutomaticallyIncludedFolderID", $title = "Automatically Included Folder (save page to update) - go to Files and Images section to create folder and upload images.", $sourceObjectName = "Folder"));
-		$fields->addFieldToTab("Root.Content.Gallery", ImageGalleryEntry::get_has_many_complex_table_field($this, "ImageGalleryEntries"));
+		$fields->addFieldToTab("Root.Gallery", new TreeDropdownField($name = "AutomaticallyIncludedFolderID", $title = "Automatically Included Folder (save page to update) - go to Files and Images section to create folder and upload images.", $sourceObjectName = "Folder"));
+		$fields->addFieldToTab("Root.Gallery", ImageGalleryEntry::get_has_many_complex_table_field($this, "ImageGalleryEntries"));
 		return $fields;
 	}
 
