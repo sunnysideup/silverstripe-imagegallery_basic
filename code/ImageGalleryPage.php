@@ -2,26 +2,27 @@
 
 class ImageGalleryPage extends Page {
 
-	static $icon = "imagegallery_basic/images/treeicons/ImageGalleryPage";
+	private static $icon = "imagegallery_basic/images/treeicons/ImageGalleryPage";
 
-	static $allowed_children = array("ImageGalleryPage"); //can also be "none";
+	private static $allowed_children = array("ImageGalleryPage"); //can also be "none";
 
-	static $default_child = "ImageGalleryPage";
+	private static $default_child = "ImageGalleryPage";
 
-	static $db = array();
+	private static $description = "Page used to display images in a gallery";
 
-	static $has_one = array(
+	private static $has_one = array(
 		"AutomaticallyIncludedFolder" => "Folder"
 	);
 
-	static $has_many = array(
+	private static $has_many = array(
 		"ImageGalleryEntries" => "ImageGalleryEntry"
 	);
 
 	function getCMSFields() {
 		$fields = parent::getCMSFields();
 		$fields->addFieldToTab("Root.Gallery", new TreeDropdownField($name = "AutomaticallyIncludedFolderID", $title = "Automatically Included Folder (save page to update) - go to Files and Images section to create folder and upload images.", $sourceObjectName = "Folder"));
-		$fields->addFieldToTab("Root.Gallery", ImageGalleryEntry::get_has_many_complex_table_field($this, "ImageGalleryEntries"));
+		$gridField = new GridField('images', 'Linked images', $this->ImageGalleryEntries(), GridFieldConfig_RelationEditor::create());
+		$fields->addFieldToTab("Root.Gallery", $gridField);
 		return $fields;
 	}
 
@@ -29,10 +30,10 @@ class ImageGalleryPage extends Page {
 		parent::onBeforeWrite();
 		$imageAdded = false;
 		if($this->AutomaticallyIncludedFolderID) {
-			if($folder = DataObject::get_by_id("Folder", $this->AutomaticallyIncludedFolderID)) {
-				if($files = DataObject::get("Image", "ParentID = ".$folder->ID)) {
+			if($folder = Folder::get()->byID($this->AutomaticallyIncludedFolderID)) {
+				if($files = Image::get()->filter("ParentID",$folder->ID)) {
 					foreach($files as $file) {
-						if(DataObject::get_one("ImageGalleryEntry", "ImageID = ".$file->ID." AND ParentID = ".$this->ID)) {
+						if(ImageGalleryEntry::get()->filter(array("ImageID" => $file->ID, "ParentID" => $this->ID))) {
 							//do nothing
 						}
 						else {
@@ -47,9 +48,13 @@ class ImageGalleryPage extends Page {
 				}
 			}
 		}
-		if($ImageGalleryEntries = DataObject::get("ImageGalleryEntry", "ParentID = ".$this->ID)){
+		if($ImageGalleryEntries = ImageGalleryEntry::get()->filter(array("ParentID" => $this->ID))){
 			foreach($ImageGalleryEntries as $ImageGalleryEntry) {
-				if($image = DataObject::get_one("Image", "File.ID = ".$ImageGalleryEntry->ImageID." AND File.Title <> '".$ImageGalleryEntry->Title."'")) {
+				$image = Image::get()
+					->filter(array("ID" => $ImageGalleryEntry->ImageID))
+					->exclude(array("Title" => $ImageGalleryEntry->Title))
+					->First();
+				if($image) {
 					$image->Title = $image->Name = $ImageGalleryEntry->Title;
 					$image->write();
 				}
@@ -61,11 +66,11 @@ class ImageGalleryPage extends Page {
 	}
 
 	function NextGallery(){
-		$extension = '';
-		if(Versioned::current_stage() == "Live") {
-			$extension = "_Live";
-		}
-		$pages = $livePage = DataObject::get("ImageGalleryPage", "ImageGalleryPage$extension.ID <> ".$this->ID." AND TimeDiff(\"Created\",'".$this->Created."') > 0", "\"Created\" ASC", null,1 );
+		$pages = ImageGalleryPage::get()
+			->exclude(array("ID" => $this->ID))
+			->where("TimeDiff(\"Created\",'".$this->Created."') > 0")
+			->sort("Created", "ASC")
+			->limit(1);
 		if($pages) {
 			foreach($pages as $page) {
 				return $page;
@@ -74,11 +79,11 @@ class ImageGalleryPage extends Page {
 	}
 
 	function PreviousGallery(){
-		$extension = '';
-		if(Versioned::current_stage() == "Live") {
-			$extension = "_Live";
-		}
-		$pages = DataObject::get("ImageGalleryPage", "ImageGalleryPage$extension.ID <> ".$this->ID." AND TimeDiff(\"Created\",'".$this->Created."') < 0", "\"Created\" DESC", null,1 );
+		$pages = ImageGalleryPage::get()
+			->exclude(array("ID" => $this->ID))
+			->where("TimeDiff(\"Created\",'".$this->Created."') < 0")
+			->sort("Created", "DESC")
+			->limit(1);
 		if($pages) {
 			foreach($pages as $page) {
 				return $page;

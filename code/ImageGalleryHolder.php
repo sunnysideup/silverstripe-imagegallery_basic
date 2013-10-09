@@ -2,17 +2,21 @@
 
 class ImageGalleryHolder extends Page {
 
-	static $icon = 'imagegallery_basic/images/treeicons/ImageGalleryHolder';
+	private static $icon = 'imagegallery_basic/images/treeicons/ImageGalleryHolder';
 
-	static $allowed_children = array('ImageGalleryPage');
+	private static $allowed_children = array('ImageGalleryPage');
 
-	static $default_child = 'ImageGalleryPage';
+	private static $default_child = 'ImageGalleryPage';
+
+	private static $description = "This page is the parent page for image galleries. ";
+
+
 }
 
 class ImageGalleryHolder_Controller extends Page_Controller {
 
 	function MyChildGalleries(){
-		return DataObject::get("ImageGalleryPage", "\"ParentID\" = ".$this->ID." AND \"ShowInSearch\" = 1");
+		return ImageGalleryPage::get()->filter(array("ParentID" => $this->ID, "ShowInSearch" => 1));
 	}
 
 

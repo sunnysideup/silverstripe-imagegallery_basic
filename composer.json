@@ -3,7 +3,7 @@
 	"type": "silverstripe-module",
 	"description": "basic image gallery",
 	"homepage": "http://www.silverstripe-webdevelopment.com",
-	"keywords": ["imagegallery_basic", "silverstripe"],
+	"keywords": ["imagegallery_basic", "silverstripe", "image gallery", "pictures", "images", "media", "media gallery"],
 	"license": "Sunny Side Up (BSD-3-Clause and CUSTOM)",
 	"authors":[
 		{
@@ -14,8 +14,11 @@
 		}
 	],
 	"require":{
-		"php": ">=5.3.2",
-		"silverstripe/framework": "~2.4",
-		"silverstripe/prettyphoto": "~2.4"
+		"silverstripe/framework": "dev-master",
+		"silverstripe/cms": "dev-master",
+		"silverstripe/prettyphoto": "dev-master"
+	},
+	"extra": {
+		"installer-name": "imagegallery_basic"
 	}
 }
