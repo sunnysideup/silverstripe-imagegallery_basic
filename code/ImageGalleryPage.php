@@ -30,11 +30,13 @@ class ImageGalleryPage extends Page {
 		parent::onBeforeWrite();
 		$imageAdded = false;
 		if($this->AutomaticallyIncludedFolderID) {
+			debug::log("A");
 			if($folder = Folder::get()->byID($this->AutomaticallyIncludedFolderID)) {
 				if($files = Image::get()->filter("ParentID",$folder->ID)) {
 					foreach($files as $file) {
-						if(ImageGalleryEntry::get()->filter(array("ImageID" => $file->ID, "ParentID" => $this->ID))) {
+						if(ImageGalleryEntry::get()->filter(array("ImageID" => $file->ID, "ParentID" => $this->ID))->count()) {
 							//do nothing
+							//debug::log("already exists");
 						}
 						else {
 							$ImageGalleryEntry = new ImageGalleryEntry();
@@ -43,10 +45,20 @@ class ImageGalleryPage extends Page {
 							$ImageGalleryEntry->ParentID = $this->ID;
 							$ImageGalleryEntry->write();
 							$imageAdded = true;
+							//debug::log("writing");
 						}
 					}
 				}
+				else {
+					//debug::log("D");
+				}
 			}
+			else {
+				//debug::log("C");
+			}
+		}
+		else {
+			//debug::log("B");
 		}
 		if($ImageGalleryEntries = ImageGalleryEntry::get()->filter(array("ParentID" => $this->ID))){
 			foreach($ImageGalleryEntries as $ImageGalleryEntry) {
@@ -61,7 +73,7 @@ class ImageGalleryPage extends Page {
 			}
 		}
 		if($imageAdded) {
-			LeftAndMain::ForceReload();
+			//LeftAndMain::force_reload();
 		}
 	}
 
@@ -96,6 +108,10 @@ class ImageGalleryPage extends Page {
 }
 
 class ImageGalleryPage_Controller extends Page_Controller {
+
+	private static $allowed_actions = array(
+		"updateimagegalleryentries" => "ADMIN"
+	);
 
 	public function init() {
 		parent::init();
