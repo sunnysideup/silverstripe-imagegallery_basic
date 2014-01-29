@@ -2,6 +2,11 @@
 
 class ImageGalleryEntry extends DataObject {
 
+
+	private static $singular_name = "Image Gallery Picture";
+
+	private static $plural_name = "Image Gallery Pictures";
+
 	private static $db = array(
 		"Title" => "Varchar(100)",
 		"Sort" => "Int"
@@ -24,9 +29,6 @@ class ImageGalleryEntry extends DataObject {
 		"Sort" => "Sorting Index Number (lower numbers show first)"
 	);
 
-	private static $singular_name = "ImageGalleryEntry";
-
-	private static $plural_name = "ImageGalleryEntries";
 	//CRUD settings
 
 	private static $default_sort = "Sort ASC, Title ASC";

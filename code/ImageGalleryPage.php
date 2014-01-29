@@ -23,6 +23,12 @@ class ImageGalleryPage extends Page {
 		$fields->addFieldToTab("Root.Gallery", new TreeDropdownField($name = "AutomaticallyIncludedFolderID", $title = "Automatically Included Folder (save page to update) - go to Files and Images section to create folder and upload images.", $sourceObjectName = "Folder"));
 		$gridField = new GridField('images', 'Linked images', $this->ImageGalleryEntries(), GridFieldConfig_RelationEditor::create());
 		$fields->addFieldToTab("Root.Gallery", $gridField);
+		if(class_exists("DataObjectSorterController")) {
+			$fields->addFieldToTab("Root.Gallery", new LiteralField("ImageGalleryEntrySorter", DataObjectSorterController::popup_link("ImageGalleryEntry", $filterField = "ParentID", $filterValue = $this->ID, $linkText = "Sort ".$this->Config()->get("ImageGalleryEntry", "plural_name"), $titleField = "FullTitle")));
+		}
+		else {
+			$fields->addFieldToTab("Root.Gallery", new NumericField($name = "Sort", "Sort index number (the lower the number, the earlier it shows up"));
+		}
 		return $fields;
 	}
 
