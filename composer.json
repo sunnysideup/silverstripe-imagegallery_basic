@@ -14,8 +14,8 @@
 		}
 	],
 	"require":{
-		"silverstripe/framework": "dev-master",
-		"silverstripe/cms": "dev-master",
+		"silverstripe/framework": "~3.1",
+		"silverstripe/cms": "~3.1",
 		"silverstripe/prettyphoto": "dev-master"
 	},
 	"extra": {
