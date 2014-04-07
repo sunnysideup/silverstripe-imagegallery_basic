@@ -16,7 +16,7 @@
 	"require":{
 		"silverstripe/framework": "~3.1",
 		"silverstripe/cms": "~3.1",
-		"silverstripe/prettyphoto": "dev-master"
+		"sunnysideup/prettyphoto": "dev-master"
 	},
 	"extra": {
 		"installer-name": "imagegallery_basic"
