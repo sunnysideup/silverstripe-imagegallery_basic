@@ -1,4 +1,5 @@
-Basic Image Gallery================================================================================
+Basic Image Gallery
+================================================================================
 
 Adds a basic image gallery to your Silverstripe
 website.
@@ -13,6 +14,7 @@ Requirements
 -----------------------------------------------
 see composer.json
 
+
 Documentation
 -----------------------------------------------
 Please contact author for more details.
@@ -22,6 +24,7 @@ looked at in detail
 
 We are also very happy to provide personalised support
 for this module in exchange for a small donation.
+
 
 Installation Instructions
 -----------------------------------------------
