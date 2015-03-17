@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/_modules/imagegallery_basic/trunk/docs/en/phpdox/../../.." file="_config.php" realpath="/var/www/_modules/imagegallery_basic/trunk/_config.php" size="444" time="2015-03-14T10:22:50+13:00" unixtime="1426281770" sha1="580b06a06060d5e782e4785813dcf6bcf6a7ab71" relative="_config.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2"/>
+  <line no="3"/>
+  <line no="4"/>
+  <line no="5">
+    <token name="T_COMMENT">/*</token>
+  </line>
+  <line no="6">
+    <token name="T_COMMENT"> * developed by www.sunnysideup.co.nz</token>
+  </line>
+  <line no="7">
+    <token name="T_COMMENT"> * author: Nicolaas - modules [at] sunnysideup.co.nz</token>
+  </line>
+  <line no="8">
+    <token name="T_COMMENT"> *</token>
+  </line>
+  <line no="9">
+    <token name="T_COMMENT"> **/</token>
+  </line>
+  <line no="10"/>
+  <line no="11">
+    <token name="T_COMMENT">//copy the lines between the START AND END line to your /mysite/_config.php file and choose the right settings</token>
+  </line>
+  <line no="12">
+    <token name="T_COMMENT">//===================---------------- START imagegallery_basic MODULE ----------------===================</token>
+  </line>
+  <line no="13">
+    <token name="T_COMMENT">//===================---------------- END imagegallery_basic MODULE ----------------===================</token>
+  </line>
+</source>

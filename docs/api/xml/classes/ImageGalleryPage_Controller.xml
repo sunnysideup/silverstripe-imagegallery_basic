@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="ImageGalleryPage_Controller" namespace="" name="ImageGalleryPage_Controller" abstract="false" final="false" start="116" end="135">
+  <file path="/var/www/_modules/imagegallery_basic/trunk/docs/en/phpdox/../../../code" file="ImageGalleryPage.php" realpath="/var/www/_modules/imagegallery_basic/trunk/code/ImageGalleryPage.php" size="3940" time="2015-03-14T10:22:50+13:00" unixtime="1426281770" sha1="e9e75d15fb3d71271842e6f5ce79149b7bf182b8" relative="code/ImageGalleryPage.php"/>
+  <extends full="Page_Controller" namespace="" name="Page_Controller"/>
+  <member name="allowed_actions" type="array" visibility="private" line="118"/>
+  <method name="init" start="122" end="127" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="updateimagegalleryentries" start="129" end="132" abstract="false" final="false" static="false" visibility="public"/>
+</class>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="ImageGalleryHolder" namespace="" name="ImageGalleryHolder" abstract="false" final="false" start="3" end="14">
+  <file path="/var/www/_modules/imagegallery_basic/trunk/docs/en/phpdox/../../../code" file="ImageGalleryHolder.php" realpath="/var/www/_modules/imagegallery_basic/trunk/code/ImageGalleryHolder.php" size="534" time="2015-03-14T10:22:50+13:00" unixtime="1426281770" sha1="9c313a9cf0fcf1ca62005208b0f0642c81b124de" relative="code/ImageGalleryHolder.php"/>
+  <extends full="Page" namespace="" name="Page"/>
+  <member name="icon" type="string" default="'imagegallery_basic/images/treeicons/ImageGalleryHolder'" visibility="private" line="5"/>
+  <member name="allowed_children" type="array" visibility="private" line="7"/>
+  <member name="default_child" type="string" default="'ImageGalleryPage'" visibility="private" line="9"/>
+  <member name="description" type="string" default="&quot;This page is the parent page for image galleries. &quot;" visibility="private" line="11"/>
+</class>
