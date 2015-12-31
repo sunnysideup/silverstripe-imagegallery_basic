@@ -1,45 +1,46 @@
 <?php
 
-class ImageGalleryEntry extends DataObject {
+class ImageGalleryEntry extends DataObject
+{
 
 
-	private static $singular_name = "Image Gallery Picture";
+    private static $singular_name = "Image Gallery Picture";
 
-	private static $plural_name = "Image Gallery Pictures";
+    private static $plural_name = "Image Gallery Pictures";
 
-	private static $db = array(
-		"Title" => "Varchar(100)",
-		"Sort" => "Int"
-	);
+    private static $db = array(
+        "Title" => "Varchar(100)",
+        "Sort" => "Int"
+    );
 
-	private static $has_one = array(
-		"Parent" => "SiteTree",
-		"Image" => "Image"
-	);
+    private static $has_one = array(
+        "Parent" => "SiteTree",
+        "Image" => "Image"
+    );
 
-	private static $searchable_fields = array(
-		"Title" => "PartialMatchFilter"
-	);
+    private static $searchable_fields = array(
+        "Title" => "PartialMatchFilter"
+    );
 
-	private static $summary_fields = array(
-		"Title" => "Title",
-	);
+    private static $summary_fields = array(
+        "Title" => "Title",
+    );
 
-	private static $field_labels = array(
-		"Sort" => "Sorting Index Number (lower numbers show first)"
-	);
+    private static $field_labels = array(
+        "Sort" => "Sorting Index Number (lower numbers show first)"
+    );
 
-	//CRUD settings
+    //CRUD settings
 
-	private static $default_sort = "Sort ASC, Title ASC";
+    private static $default_sort = "Sort ASC, Title ASC";
 
-	private static $defaults = array(
-		"Sort" => 100
-	);
+    private static $defaults = array(
+        "Sort" => 100
+    );
 
-	public function populateDefaults() {
-		parent::populateDefaults();
-		$this->Sort = 100;
-	}
-
+    public function populateDefaults()
+    {
+        parent::populateDefaults();
+        $this->Sort = 100;
+    }
 }
