@@ -3,8 +3,10 @@
     "type": "silverstripe-module",
     "description": "basic image gallery",
     "keywords": [
+        "Silverstripe-CMS",
+        "CMS",
+        "Silverstripe",
         "imagegallery_basic",
-        "silverstripe",
         "image gallery",
         "pictures",
         "images",
@@ -22,7 +24,7 @@
     "require": {
         "silverstripe/framework": "~3.1",
         "silverstripe/cms": "~3.1",
-        "sunnysideup/prettyphoto": "dev-master"
+        "sunnysideup/prettyphoto": "*"
     },
     "extra": {
         "installer-name": "imagegallery_basic"
