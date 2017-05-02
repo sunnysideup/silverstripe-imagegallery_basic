@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="ImageGalleryHolder_Controller" namespace="" name="ImageGalleryHolder_Controller" abstract="false" final="false" start="16" end="23">
-  <file path="/var/www/_modules/imagegallery_basic/trunk/docs/en/phpdox/../../../code" file="ImageGalleryHolder.php" realpath="/var/www/_modules/imagegallery_basic/trunk/code/ImageGalleryHolder.php" size="534" time="2015-03-14T10:22:50+13:00" unixtime="1426281770" sha1="9c313a9cf0fcf1ca62005208b0f0642c81b124de" relative="code/ImageGalleryHolder.php"/>
-  <extends full="Page_Controller" namespace="" name="Page_Controller"/>
-  <method name="MyChildGalleries" start="18" end="20" abstract="false" final="false" static="false" visibility="public"/>
-</class>
