@@ -21,7 +21,8 @@ class ImageGalleryEntry extends DataObject
     );
 
     private static $summary_fields = array(
-        "Title" => "Title",
+        "Image.CMSThumbNail" => "Image",
+        "Title" => "Title"
     );
 
     private static $field_labels = array(

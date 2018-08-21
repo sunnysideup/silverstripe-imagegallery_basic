@@ -21,11 +21,26 @@ class ImageGalleryPage extends Page
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->addFieldToTab("Root.Gallery", new TreeDropdownField($name = "AutomaticallyIncludedFolderID", $title = "Automatically Included Folder (save page to update) - go to Files and Images section to create folder and upload images.", $sourceObjectName = "Folder"));
+        $fields->addFieldToTab("Root.Gallery", $treeDropdowField = TreeDropdownField::create($name = "AutomaticallyIncludedFolderID", $title = "Automatically Included Folder", $sourceObjectName = "Folder"));
+        $treeDropdowField->setRightTitle('
+            To update, please save page<br />
+            <a href="/admin/assets/show/'.$this->AutomaticallyIncludedFolderID.'">see files and images section for included images</a>
+        ');
         $gridField = new GridField('images', 'Linked images', $this->ImageGalleryEntries(), GridFieldConfig_RelationEditor::create());
         $fields->addFieldToTab("Root.Gallery", $gridField);
         if (class_exists("DataObjectSorterController")) {
-            $fields->addFieldToTab("Root.Gallery", new LiteralField("ImageGalleryEntrySorter", DataObjectSorterController::popup_link("ImageGalleryEntry", $filterField = "ParentID", $filterValue = $this->ID, $linkText = "Sort ".$this->Config()->get("ImageGalleryEntry", "plural_name"), $titleField = "FullTitle")));
+            $fields->addFieldToTab(
+                "Root.Gallery", LiteralField::create(
+                    "ImageGalleryEntrySorter",
+                    DataObjectSorterController::popup_link(
+                        "ImageGalleryEntry",
+                        $filterField = "ParentID",
+                        $filterValue = $this->ID,
+                        $linkText = "Sort Items",
+                        $titleField = "FullTitle"
+                        )
+                    )
+            );
         } else {
             $fields->addFieldToTab("Root.Gallery", new NumericField($name = "Sort", "Sort index number (the lower the number, the earlier it shows up"));
         }
