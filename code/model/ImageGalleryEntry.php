@@ -29,6 +29,10 @@ class ImageGalleryEntry extends DataObject
         "Sort" => "Sorting Index Number (lower numbers show first)"
     );
 
+    private static $casting = array(
+        "BestTitle" => "Varchar"
+    );
+
     //CRUD settings
 
     private static $default_sort = "Sort ASC, Title ASC";
@@ -37,9 +41,37 @@ class ImageGalleryEntry extends DataObject
         "Sort" => 100
     );
 
+    public function getBestTitle()
+    {
+        $image = $this->Image();
+        if($image && $image->exists()) {
+            if($image->Title) {
+                if($this->Title !== $image->Title) {
+                    $this->Title = $image->Title;
+                    $this->write();
+                }
+                return $image->Title;
+            }
+        }
+        return $this->Title;
+    }
+
     public function populateDefaults()
     {
         parent::populateDefaults();
         $this->Sort = 100;
     }
+
+    /**
+     * CMS Fields
+     * @return FieldList
+     */
+    public function getCMSFields()
+    {
+        $fields = parent::getCMSFields();
+        $fields->removeFieldFromTab('Root.Main', 'Title');
+
+        return $fields;
+    }
+
 }

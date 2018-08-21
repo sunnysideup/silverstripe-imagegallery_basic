@@ -21,10 +21,12 @@ class ImageGalleryPage extends Page
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->addFieldToTab("Root.Gallery", $treeDropdowField = TreeDropdownField::create($name = "AutomaticallyIncludedFolderID", $title = "Automatically Included Folder", $sourceObjectName = "Folder"));
+        $fields->addFieldToTab("Root.Gallery", $treeDropdowField = TreeDropdownField::create($name = "AutomaticallyIncludedFolderID", $title = "Quick Add from Folder", $sourceObjectName = "Folder"));
         $treeDropdowField->setRightTitle('
-            To update, please save page<br />
-            <a href="/admin/assets/show/'.$this->AutomaticallyIncludedFolderID.'">see files and images section for included images</a>
+            Add a folder here to add a bunch of images all at once.<br />
+            <a href="/admin/assets/show/'.$this->AutomaticallyIncludedFolderID.'">see files and images</a> section to add, remove and edit images in a folder before selecting one here.
+            <br />
+            Once added, you can edit the images below as you see fit.
         ');
         $gridField = new GridField('images', 'Linked images', $this->ImageGalleryEntries(), GridFieldConfig_RelationEditor::create());
         $fields->addFieldToTab("Root.Gallery", $gridField);
@@ -52,7 +54,6 @@ class ImageGalleryPage extends Page
         parent::onBeforeWrite();
         $imageAdded = false;
         if ($this->AutomaticallyIncludedFolderID) {
-            debug::log("A");
             if ($folder = Folder::get()->byID($this->AutomaticallyIncludedFolderID)) {
                 if ($files = Image::get()->filter("ParentID", $folder->ID)) {
                     foreach ($files as $file) {
@@ -93,6 +94,8 @@ class ImageGalleryPage extends Page
         if ($imageAdded) {
             //LeftAndMain::force_reload();
         }
+        $this->AutomaticallyIncludedFolderID = 0;
+
     }
 
     public function NextGallery()
