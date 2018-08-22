@@ -44,9 +44,9 @@ class ImageGalleryEntry extends DataObject
     public function getBestTitle()
     {
         $image = $this->Image();
-        if($image && $image->exists()) {
-            if($image->Title) {
-                if($this->Title !== $image->Title) {
+        if ($image && $image->exists()) {
+            if ($image->Title) {
+                if ($this->Title !== $image->Title) {
                     $this->Title = $image->Title;
                     $this->write();
                 }
@@ -73,5 +73,4 @@ class ImageGalleryEntry extends DataObject
 
         return $fields;
     }
-
 }

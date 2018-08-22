@@ -32,7 +32,8 @@ class ImageGalleryPage extends Page
         $fields->addFieldToTab("Root.Gallery", $gridField);
         if (class_exists("DataObjectSorterController")) {
             $fields->addFieldToTab(
-                "Root.Gallery", LiteralField::create(
+                "Root.Gallery",
+                LiteralField::create(
                     "ImageGalleryEntrySorter",
                     DataObjectSorterController::popup_link(
                         "ImageGalleryEntry",
@@ -95,7 +96,6 @@ class ImageGalleryPage extends Page
             //LeftAndMain::force_reload();
         }
         $this->AutomaticallyIncludedFolderID = 0;
-
     }
 
     public function NextGallery()
