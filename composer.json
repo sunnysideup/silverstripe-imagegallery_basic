@@ -22,8 +22,9 @@
         }
     ],
     "require": {
-        "silverstripe/cms": "~3.6",
-        "sunnysideup/prettyphoto": "*"
+        "sunnysideup/prettyphoto": "*",
+        "composer/installers": "^1.6",
+        "silverstripe/recipe-cms": "^4.2"
     },
     "extra": {
         "installer-name": "imagegallery_basic"
