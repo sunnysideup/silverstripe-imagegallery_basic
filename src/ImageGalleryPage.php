@@ -3,41 +3,52 @@
 namespace Sunnysideup\ImagegalleryBasic;
 
 use Page;
-use TreeDropdownField;
-use GridField;
-use GridFieldConfig_RelationEditor;
-use LiteralField;
+
+
+
+
 use DataObjectSorterController;
-use NumericField;
-use Folder;
-use Image;
-use ImageGalleryEntry;
-use Page_Controller;
+
+
+
+
+
 use PrettyPhoto;
+use Sunnysideup\ImagegalleryBasic\ImageGalleryPage;
+use SilverStripe\Assets\Folder;
+use Sunnysideup\ImagegalleryBasic\Model\ImageGalleryEntry;
+use SilverStripe\Forms\TreeDropdownField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\NumericField;
+use SilverStripe\Assets\Image;
+use PageController;
+
 
 
 class ImageGalleryPage extends Page
 {
     private static $icon = "imagegallery_basic/images/treeicons/ImageGalleryPage";
 
-    private static $allowed_children = array("ImageGalleryPage"); //can also be "none";
+    private static $allowed_children = array(ImageGalleryPage::class); //can also be "none";
 
-    private static $default_child = "ImageGalleryPage";
+    private static $default_child = ImageGalleryPage::class;
 
     private static $description = "Page used to display images in a gallery";
 
     private static $has_one = array(
-        "AutomaticallyIncludedFolder" => "Folder"
+        "AutomaticallyIncludedFolder" => Folder::class
     );
 
     private static $has_many = array(
-        "ImageGalleryEntries" => "ImageGalleryEntry"
+        "ImageGalleryEntries" => ImageGalleryEntry::class
     );
 
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->addFieldToTab("Root.Gallery", $treeDropdowField = TreeDropdownField::create($name = "AutomaticallyIncludedFolderID", $title = "Quick Add from Folder", $sourceObjectName = "Folder"));
+        $fields->addFieldToTab("Root.Gallery", $treeDropdowField = TreeDropdownField::create($name = "AutomaticallyIncludedFolderID", $title = "Quick Add from Folder", $sourceObjectName = Folder::class));
         $treeDropdowField->setRightTitle('
             Add a folder here to add a bunch of images all at once.<br />
             <a href="/admin/assets/show/'.$this->AutomaticallyIncludedFolderID.'">see files and images</a> section to add, remove and edit images in a folder before selecting one here.
@@ -52,7 +63,7 @@ class ImageGalleryPage extends Page
                 LiteralField::create(
                     "ImageGalleryEntrySorter",
                     DataObjectSorterController::popup_link(
-                        "ImageGalleryEntry",
+                        ImageGalleryEntry::class,
                         $filterField = "ParentID",
                         $filterValue = $this->ID,
                         $linkText = "Sort Items",
@@ -152,7 +163,7 @@ class ImageGalleryPage extends Page
   * EXP: Remove the underscore in your classname - check all references!
   * ### @@@@ STOP REPLACEMENT @@@@ ###
   */
-class ImageGalleryPageController extends Page_Controller
+class ImageGalleryPageController extends PageController
 {
     private static $allowed_actions = array(
         "updateimagegalleryentries" => "ADMIN"

@@ -3,16 +3,19 @@
 namespace Sunnysideup\ImagegalleryBasic;
 
 use Page;
-use Page_Controller;
+
+use Sunnysideup\ImagegalleryBasic\ImageGalleryPage;
+use PageController;
+
 
 
 class ImageGalleryHolder extends Page
 {
     private static $icon = 'imagegallery_basic/images/treeicons/ImageGalleryHolder';
 
-    private static $allowed_children = array('ImageGalleryPage');
+    private static $allowed_children = array(ImageGalleryPage::class);
 
-    private static $default_child = 'ImageGalleryPage';
+    private static $default_child = ImageGalleryPage::class;
 
     private static $description = "This page is the parent page for image galleries. ";
 }
@@ -26,7 +29,7 @@ class ImageGalleryHolder extends Page
   * EXP: Remove the underscore in your classname - check all references!
   * ### @@@@ STOP REPLACEMENT @@@@ ###
   */
-class ImageGalleryHolderController extends Page_Controller
+class ImageGalleryHolderController extends PageController
 {
     public function MyChildGalleries()
     {

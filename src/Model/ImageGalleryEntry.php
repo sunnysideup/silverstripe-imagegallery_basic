@@ -2,7 +2,11 @@
 
 namespace Sunnysideup\ImagegalleryBasic\Model;
 
-use DataObject;
+
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Assets\Image;
+use SilverStripe\ORM\DataObject;
+
 
 
 class ImageGalleryEntry extends DataObject
@@ -17,8 +21,8 @@ class ImageGalleryEntry extends DataObject
     );
 
     private static $has_one = array(
-        "Parent" => "SiteTree",
-        "Image" => "Image"
+        "Parent" => SiteTree::class,
+        "Image" => Image::class
     );
 
     private static $searchable_fields = array(
