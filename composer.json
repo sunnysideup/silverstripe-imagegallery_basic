@@ -1,6 +1,6 @@
 {
     "name": "sunnysideup/imagegallery_basic",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "basic image gallery",
     "keywords": [
         "Silverstripe-CMS",
