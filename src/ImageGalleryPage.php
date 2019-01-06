@@ -127,7 +127,16 @@ class ImageGalleryPage extends Page
     }
 }
 
-class ImageGalleryPage_Controller extends Page_Controller
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: upgrade to SS4
+  * OLD: _Controller extends Page_Controller (case sensitive)
+  * NEW: Controller extends Page_Controller (COMPLEX)
+  * EXP: Remove the underscore in your classname - check all references!
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+class ImageGalleryPageController extends Page_Controller
 {
     private static $allowed_actions = array(
         "updateimagegalleryentries" => "ADMIN"
