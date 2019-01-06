@@ -1,5 +1,21 @@
 <?php
 
+namespace Sunnysideup\ImagegalleryBasic;
+
+use Page;
+use TreeDropdownField;
+use GridField;
+use GridFieldConfig_RelationEditor;
+use LiteralField;
+use DataObjectSorterController;
+use NumericField;
+use Folder;
+use Image;
+use ImageGalleryEntry;
+use Page_Controller;
+use PrettyPhoto;
+
+
 class ImageGalleryPage extends Page
 {
     private static $icon = "imagegallery_basic/images/treeicons/ImageGalleryPage";

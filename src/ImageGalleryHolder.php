@@ -1,5 +1,11 @@
 <?php
 
+namespace Sunnysideup\ImagegalleryBasic;
+
+use Page;
+use Page_Controller;
+
+
 class ImageGalleryHolder extends Page
 {
     private static $icon = 'imagegallery_basic/images/treeicons/ImageGalleryHolder';

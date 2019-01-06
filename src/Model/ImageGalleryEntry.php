@@ -1,5 +1,10 @@
 <?php
 
+namespace Sunnysideup\ImagegalleryBasic\Model;
+
+use DataObject;
+
+
 class ImageGalleryEntry extends DataObject
 {
     private static $singular_name = "Image Gallery Picture";
