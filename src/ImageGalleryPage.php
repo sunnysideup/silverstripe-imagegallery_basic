@@ -25,10 +25,10 @@ use SilverStripe\Forms\NumericField;
 use SilverStripe\Assets\Image;
 use PageController;
 
-
-
 class ImageGalleryPage extends Page
 {
+    private static $table_name = 'ImageGalleryPage';
+
     private static $icon = "imagegallery_basic/images/treeicons/ImageGalleryPage";
 
     private static $allowed_children = array(ImageGalleryPage::class); //can also be "none";

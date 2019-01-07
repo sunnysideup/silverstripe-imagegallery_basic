@@ -2,15 +2,14 @@
 
 namespace Sunnysideup\ImagegalleryBasic\Model;
 
-
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Assets\Image;
 use SilverStripe\ORM\DataObject;
 
-
-
 class ImageGalleryEntry extends DataObject
 {
+    private static $table_name = 'ImageGalleryEntry';
+
     private static $singular_name = "Image Gallery Picture";
 
     private static $plural_name = "Image Gallery Pictures";
