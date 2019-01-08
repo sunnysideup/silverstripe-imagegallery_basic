@@ -1,6 +1,6 @@
 mappings:
-  ImageGalleryPage: Sunnysideup\ImagegalleryBasic\ImageGalleryPage
-  ImageGalleryPageController: Sunnysideup\ImagegalleryBasic\ImageGalleryPageController
-  ImageGalleryHolder: Sunnysideup\ImagegalleryBasic\ImageGalleryHolder
-  ImageGalleryHolderController: Sunnysideup\ImagegalleryBasic\ImageGalleryHolderController
-  ImageGalleryEntry: Sunnysideup\ImagegalleryBasic\Model\ImageGalleryEntry
+  ImageGalleryPage: Sunnysideup\ImageGalleryBasic\ImageGalleryPage
+  ImageGalleryPageController: Sunnysideup\ImageGalleryBasic\ImageGalleryPageController
+  ImageGalleryHolder: Sunnysideup\ImageGalleryBasic\ImageGalleryHolder
+  ImageGalleryHolderController: Sunnysideup\ImageGalleryBasic\ImageGalleryHolderController
+  ImageGalleryEntry: Sunnysideup\ImageGalleryBasic\Model\ImageGalleryEntry

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sunnysideup\ImagegalleryBasic\Model;
+namespace Sunnysideup\ImageGalleryBasic\Model;
 
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Assets\Image;

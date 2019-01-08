@@ -1,6 +1,6 @@
 <?php
 
-namespace Sunnysideup\ImagegalleryBasic;
+namespace Sunnysideup\ImageGalleryBasic;
 
 /*
  * developed by www.sunnysideup.co.nz
