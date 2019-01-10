@@ -49,7 +49,7 @@ class ImageGalleryPage extends Page
     {
         $fields = parent::getCMSFields();
         $fields->addFieldToTab("Root.Gallery", $treeDropdowField = TreeDropdownField::create($name = "AutomaticallyIncludedFolderID", $title = "Quick Add from Folder", $sourceObjectName = Folder::class));
-        $treeDropdowField->setRightTitle('
+        $treeDropdowField->setDescription('
             Add a folder here to add a bunch of images all at once.<br />
             <a href="/admin/assets/show/'.$this->AutomaticallyIncludedFolderID.'">see files and images</a> section to add, remove and edit images in a folder before selecting one here.
             <br />
