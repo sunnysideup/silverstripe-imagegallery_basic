@@ -3,17 +3,8 @@
 namespace Sunnysideup\ImageGalleryBasic;
 
 use Page;
+use PageController;
 
-
-
-
-use DataObjectSorterController;
-
-
-
-
-
-use PrettyPhoto;
 use Sunnysideup\ImageGalleryBasic\ImageGalleryPage;
 use SilverStripe\Assets\Folder;
 use Sunnysideup\ImageGalleryBasic\Model\ImageGalleryEntry;
@@ -23,7 +14,7 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Assets\Image;
-use PageController;
+use Sunnysideup\DataobjectSorter\DataObjectSorterController;
 
 class ImageGalleryPage extends Page
 {
@@ -57,7 +48,7 @@ class ImageGalleryPage extends Page
         ');
         $gridField = new GridField('images', 'Linked images', $this->ImageGalleryEntries(), GridFieldConfig_RelationEditor::create());
         $fields->addFieldToTab("Root.Gallery", $gridField);
-        if (class_exists("DataObjectSorterController")) {
+        if (class_exists(DataObjectSorterController::class)) {
             $fields->addFieldToTab(
                 "Root.Gallery",
                 LiteralField::create(
